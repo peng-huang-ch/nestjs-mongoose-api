@@ -17,8 +17,8 @@ export class UsersController {
     private readonly usersMgr: UsersManager,
   ) {}
 
-  @ApiBearerAuth()
   @ApiOperation({ operationId: 'create_user', summary: 'create user' })
+  @ApiBearerAuth()
   @MakeApi200Response(UserEntity)
   @MakeApi400Response('email already used.')
   @ApiBody({

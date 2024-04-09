@@ -16,7 +16,7 @@ export class BaseService<T> {
   }
 
   async findOne(filter: FilterQuery<T>, projection?: ProjectionType<T>, options?: QueryOptions<T>) {
-    return this.model.findOne(filter, projection, options);
+    return await this.model.findOne(filter, projection, options);
   }
 
   async updateOne(filter: QueryOptions<T>, update: UpdateQuery<T>, options?: DeleteOptions) {

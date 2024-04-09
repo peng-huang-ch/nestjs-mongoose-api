@@ -5,7 +5,7 @@ import mongoose, { Document } from 'mongoose';
 
 export type AccountDocument = UserEntity & Document;
 
-@Schema({ timestamps: true })
+@Schema({ timestamps: true, collection: 'users' })
 export class UserEntity {
   @ApiProperty({ required: false, nullable: true })
   @Prop({ required: true })

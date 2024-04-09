@@ -55,7 +55,7 @@ export class AuthService {
     const iconUrl = googleProps?.picture;
     if (!email || !googleId) throw new ForbiddenException('failed to login with google');
 
-    const data = { googleId, googleProps, name, email, iconUrl };
+    const data = { googleProps, name, email, iconUrl };
     const where = { googleId };
     const doc = await this.usersMgr.login(where, data);
     return this.signToLogin(doc);
@@ -80,7 +80,7 @@ export class AuthService {
     const name = googleProps?.name;
     const iconUrl = googleProps?.picture;
     if (!email || !googleId) throw new ForbiddenException('failed to login with google');
-    const data = { googleId, googleProps, name, email, iconUrl };
+    const data = { googleProps, name, email, iconUrl };
     const where = { googleId };
     const doc = await this.usersMgr.login(where, data);
     return this.signToLogin(doc);
@@ -96,10 +96,11 @@ export class AuthService {
   }
 
   async signToLogin(doc: UserEntity) {
-    const payload = { _id: doc._id };
+    const id = doc._id || doc['id'];
+    const payload = { id };
     const token = await this.jwtService.signAsync(payload);
     return {
-      _id: doc._id,
+      id,
       token,
       name: doc.name,
       email: doc.email,
