@@ -1,9 +1,9 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
 
-import mongoose, { Document } from 'mongoose';
+import mongoose, { HydratedDocument } from 'mongoose';
 
-export type AccountDocument = UserEntity & Document;
+export type UserDocument = HydratedDocument<UserEntity>;
 
 @Schema({ timestamps: true, collection: 'users' })
 export class UserEntity {
