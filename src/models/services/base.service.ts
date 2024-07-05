@@ -19,11 +19,11 @@ export class BaseService<T> {
     return await this.model.findOne(filter, projection, options);
   }
 
-  async updateOne(filter: QueryOptions<T>, update: UpdateQuery<T>, options?: DeleteOptions) {
+  async updateOne(filter: FilterQuery<T>, update: UpdateQuery<T>, options?: DeleteOptions) {
     return await this.model.updateOne(filter, update, options).lean().exec();
   }
 
-  async updateMany(filter: QueryOptions<T>, update: UpdateQuery<T>, options?: DeleteOptions) {
+  async updateMany(filter: FilterQuery<T>, update: UpdateQuery<T>, options?: DeleteOptions) {
     return await this.model.updateMany(filter, update, options).lean().exec();
   }
 
@@ -31,15 +31,15 @@ export class BaseService<T> {
     return await this.model.findOneAndUpdate(filter, update, options).lean().exec();
   }
 
-  async findOneAndDelete(filter: QueryOptions<T>, options?: QueryOptions<T>) {
+  async findOneAndDelete(filter: FilterQuery<T>, options?: QueryOptions<T>) {
     return await this.model.findOneAndDelete(filter, options).lean().exec();
   }
 
-  async deleteOne(filter: QueryOptions<T>, options?: DeleteOptions) {
+  async deleteOne(filter: FilterQuery<T>, options?: DeleteOptions) {
     return await this.model.deleteOne(filter, options).lean().exec();
   }
 
-  async deleteMany(filter: QueryOptions<T>, options?: DeleteOptions) {
+  async deleteMany(filter: FilterQuery<T>, options?: DeleteOptions) {
     return await this.model.deleteMany(filter, options).lean().exec();
   }
 

@@ -41,6 +41,7 @@ export const otelSDK = new NodeSDK({
     getNodeAutoInstrumentations({
       '@opentelemetry/instrumentation-nestjs-core': { enabled: false },
       '@opentelemetry/instrumentation-mongoose': { enabled: true },
+      '@opentelemetry/instrumentation-mongodb': { enabled: true },
       '@opentelemetry/instrumentation-pino': { enabled: true },
       '@opentelemetry/instrumentation-http': { enabled: true },
       '@opentelemetry/instrumentation-ioredis': { enabled: true },
