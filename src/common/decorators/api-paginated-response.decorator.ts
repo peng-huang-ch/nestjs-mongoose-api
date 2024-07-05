@@ -37,15 +37,15 @@ export class ApiPaginatedQuery {
   @Min(0)
   offset: number;
 
-  @ApiProperty({ required: false, example: 'id', default: 'id' })
+  @ApiProperty({ required: false, example: '_id', default: '_id' })
   @IsOptional()
   @IsString()
   sortBy?: string;
 
-  @ApiProperty({ required: false, enum: SortOrder, example: 'desc', default: 'desc' })
+  @ApiProperty({ required: false, enum: SortOrder, example: SortOrder.DESC })
   @IsOptional()
-  @IsString()
-  sortOrder?: string;
+  @Transformer(() => Number)
+  sortOrder?: number;
 }
 
 export const ApiPaginatedResponse = <TModel extends Type<any>>(model: TModel) => {

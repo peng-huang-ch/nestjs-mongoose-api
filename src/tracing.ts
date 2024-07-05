@@ -18,7 +18,7 @@ import { NodeSDK } from '@opentelemetry/sdk-node';
 import { BatchSpanProcessor } from '@opentelemetry/sdk-trace-base';
 import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions';
 
-import 'dotenv';
+import 'dotenv/config';
 
 const { OTLP_SERVICE_NAME = 'nestjs-mongoose-api', OTLP_PROM_PORT, OTLP_TRACES_ENDPOINT } = process.env;
 

@@ -2,6 +2,7 @@
 import { otelEnable, otelSDK } from './tracing'; // Make sure it's the first line
 
 import { ConfigService } from '@nestjs/config';
+import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
@@ -24,6 +25,7 @@ async function bootstrap() {
   const HTTP_PORT: string = configService.get('HTTP_PORT');
 
   app.useGlobalInterceptors(new LoggerErrorInterceptor());
+  app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
   app.useLogger(logger);
   app.disable('x-powered-by');
 

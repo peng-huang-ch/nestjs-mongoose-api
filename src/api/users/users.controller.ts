@@ -50,7 +50,7 @@ export class UsersController {
     const where = {};
     if (queryUsersDto.q) Object.assign(where, { name: new RegExp('^' + queryUsersDto.q) });
     const projection = {};
-    return this.usersMgr.usersSvc.paginate(where, {}, pagination);
+    return this.usersMgr.usersSvc.paginate(where, projection, pagination);
   }
 
   @ApiOkResponse({ type: UserEntity })

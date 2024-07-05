@@ -47,6 +47,13 @@ export class EnvironmentVariables {
   DATABASE_URL: string;
 
   @Expose()
+  @IsBoolean()
+  @Transform(({ value }) => {
+    return [true, 'enabled', 'true'].indexOf(value) > -1;
+  })
+  DATABASE_DEBUG: boolean;
+
+  @Expose()
   @IsString()
   REDIS_URL: string;
 
